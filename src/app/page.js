@@ -1,4 +1,4 @@
-import family from '/public/assets/images/Index-Family.png'
+import family from '@/assets/images/Index-Family.png'
 import Image from 'next/image';
 
 export default function Home() {
