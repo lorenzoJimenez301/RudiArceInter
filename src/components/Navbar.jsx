@@ -52,7 +52,7 @@ const Navbar = () => {
                 animate={{ transform: isOpen ? 'translateX(0%)' : 'translateX(100%)', display: isOpen ? 'flex' : 'none' }}
                 transition={{ duration: 0.1 }}
                 className='bg-blackCustom w-full absolute h-full overflow-y-scroll flex-col font-poppins font-light flex gap-8 justify-start items-center text-xl lg:hidden z-50'>
-                <ul className='gap-10 h-[70%] flex justify-center items-center flex-col w-full bg-red-600'>
+                <ul className='gap-10 h-[70%] flex justify-center items-center flex-col w-fulln'>
                     <motion.li initial={{ opacity: 0, y: 50 }} animate={{ opacity: isOpen ? 1 : 0, y: isOpen ? 0 : 50 }} transition={{ duration: 0.3, stiffness: 1000, velocity: -100 }}><a href='#'>Inicio</a></motion.li>
                     <motion.li initial={{ opacity: 0, y: 50 }} animate={{ opacity: isOpen ? 1 : 0, y: isOpen ? 0 : 50 }} transition={{ duration: 0.4, stiffness: 1000, velocity: -100 }}><a href='#'>Seguro de Vida</a></motion.li>
                     <motion.li initial={{ opacity: 0, y: 50 }} animate={{ opacity: isOpen ? 1 : 0, y: isOpen ? 0 : 50 }} transition={{ duration: 0.5, stiffness: 1000, velocity: -100 }}><a href='#'>Sobre Mi</a></motion.li>

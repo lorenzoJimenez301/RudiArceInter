@@ -14,7 +14,6 @@ export default function Home() {
   function toggler(state) {
     setHover(state)
   }
-  console.log(isHover)
 
   return (
     <main className='flex flex-col lg:flex-row items-center justify-start h-full w-full'>
@@ -38,13 +37,13 @@ export default function Home() {
               initial={{ scale: 1 }}
               whileHover={{ scale: 1.1 }}
               transition={{ type: 'spring', stiffness: 300 }}
-              className='bg-azulCustom p-2 px-3 flex items-center justify-center gap-3 '>Adquirir Seguro
+              className='bg-azulCustom p-2 px-3 flex items-center justify-center gap-3 text-sm'>Adquirir Seguro
             </motion.button>
           </Link>
         </div>
       </div>
       <div className='flex flex-col items-center justify-center w-full'>
-        <Image className='w-[20rem] sm:w-[25rem] lg:w-[40rem]' src={family} alt='Family' />
+        <Image className='w-[20rem] sm:w-[25rem] lg:w-[38rem] imageIndex' src={family} alt='Family' />
       </div>
     </main>
   );
