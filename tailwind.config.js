@@ -6,15 +6,14 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    fontFamily:{
-      'poppins': ['Poppins', 'sans-serif'],
-      'flatine': ['flatline', 'sans-serif']
-    },
     extend: {
       colors: {
         'blackCustom': '#1d1d1d',
         'azulCustom': '#10ABF5',
-      }
+      },
+      fontFamily: {
+        'flatline': ['var(--flatline)']
+      },
     },
   },
   plugins: [],

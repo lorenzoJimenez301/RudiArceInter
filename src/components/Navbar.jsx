@@ -27,12 +27,12 @@ const Navbar = () => {
         setIsOpen(!isOpen);
     };
     return (
-        <nav className='text-center w-[100%] text-white '>
-            <div className='flex w-full items-center justify-between bg-blackCustom z-20 absolute'>
-                <Image src={navLogo} alt='Logo' height={80} />
+        <nav className='text-center w-[100%] text-white text-xs md:text-lg'>
+            <div className='flex w-full items-center justify-between bg-blackCustom z-20 '>
+                <Image className='ml-5' src={navLogo} alt='Logo' height={80} />
                 {isOpen ?
-                    <TfiClose onClick={toggleMenu} className='text-white text-[33px] mr-8 cursor-pointer block lg:hidden' /> :
-                    <CiMenuFries onClick={toggleMenu} className='text-white text-[33px] mr-8 cursor-pointer block lg:hidden' />
+                    <TfiClose onClick={toggleMenu} className='text-white text-[33px] mr-5 cursor-pointer block lg:hidden' /> :
+                    <CiMenuFries onClick={toggleMenu} className='text-white text-[33px] mr-5 cursor-pointer block lg:hidden' />
                 }
                 <ul className='bg-blackCustom  font-poppins font-light justify-center items-center hidden lg:flex text-sm gap-10 w-auto mr-8'>
                     <li className='hover:text-azulCustom transition duration-500'><Link href='/'>Inicio</Link></li>
@@ -48,11 +48,11 @@ const Navbar = () => {
                 </ul>
             </div>
             <motion.div
-                initial={{ transform: 'translateX(100%)' }}
+                initial={{ transform: 'translateX(100%)', display: 'none'}}
                 animate={{ transform: isOpen ? 'translateX(0%)' : 'translateX(100%)', display: isOpen ? 'flex' : 'none' }}
                 transition={{ duration: 0.1 }}
-                className='bg-blackCustom w-full flex-col font-poppins font-light h-screen flex justify-center items-center text-xl lg:hidden absolute z-10'>
-                <ul className='gap-10 h-[70%] flex justify-center items-center flex-col'>
+                className='bg-blackCustom w-full absolute h-full overflow-y-scroll flex-col font-poppins font-light flex gap-8 justify-start items-center text-xl lg:hidden z-50'>
+                <ul className='gap-10 h-[70%] flex justify-center items-center flex-col w-full bg-red-600'>
                     <motion.li initial={{ opacity: 0, y: 50 }} animate={{ opacity: isOpen ? 1 : 0, y: isOpen ? 0 : 50 }} transition={{ duration: 0.3, stiffness: 1000, velocity: -100 }}><a href='#'>Inicio</a></motion.li>
                     <motion.li initial={{ opacity: 0, y: 50 }} animate={{ opacity: isOpen ? 1 : 0, y: isOpen ? 0 : 50 }} transition={{ duration: 0.4, stiffness: 1000, velocity: -100 }}><a href='#'>Seguro de Vida</a></motion.li>
                     <motion.li initial={{ opacity: 0, y: 50 }} animate={{ opacity: isOpen ? 1 : 0, y: isOpen ? 0 : 50 }} transition={{ duration: 0.5, stiffness: 1000, velocity: -100 }}><a href='#'>Sobre Mi</a></motion.li>
