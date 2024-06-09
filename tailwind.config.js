@@ -12,7 +12,8 @@ module.exports = {
         'azulCustom': '#10ABF5',
       },
       fontFamily: {
-        'flatline': ['var(--flatline)']
+        'flatline': ['var(--flatline)', 'serif'],
+        'poppins': ['var(--poppins)', 'serif'],
       },
     },
   },

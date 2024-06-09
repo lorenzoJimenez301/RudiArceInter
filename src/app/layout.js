@@ -2,6 +2,7 @@ import "./globals.css";
 import Navbar from '../components/Navbar.jsx'
 import Footer from '../components/Footer'
 import Flatline from 'next/font/local'
+import { Poppins } from 'next/font/google'
 
 
 export const metadata = {
@@ -15,11 +16,23 @@ const fontFlatline = Flatline({
   variable: '--flatline'
 })
 
+const fontPoppins = Poppins({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--poppins",
+})
+
 export default function RootLayout({ children }) {
   return (
-    <html lang="es" className={fontFlatline.variable}>
-      <body>
-        <Navbar />
+    <html lang="es">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link rel="icon" href='/favicon.ico' />
+      </head>
+      <body className={`${fontPoppins.variable} ${fontFlatline.variable} font-poppins`}>
+        <header>
+          <Navbar />
+        </header>
         {children}
         <Footer />
       </body>

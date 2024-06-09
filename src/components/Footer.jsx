@@ -1,4 +1,4 @@
-import logo from '@/assets/images/NavBarLogo.png'
+import logo from '@/assets/images/Logo_RAI.svg'
 import Image from 'next/image';
 import React from 'react'
 import { BsFacebook, BsLinkedin, BsWhatsapp } from "react-icons/bs";

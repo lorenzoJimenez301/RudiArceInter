@@ -16,12 +16,12 @@ export default function Home() {
   }
 
   return (
-    <main className='flex flex-col lg:flex-row items-center justify-start h-full w-full'>
-      <div className='flex flex-col lg:flex-row items-center justify-center pt-10 pb-6 px-12 md:px-16 lg:px-0 lg:pl-16 lg:py-0 text-center lg:text-justify'>
+    <main className='flex flex-col lg:flex-row items-center justify-start'>
+      <div className='flex flex-col lg:flex-row items-center justify-center pt-10 pb-6 px-5 md:px-16 lg:px-0 lg:pl-16 lg:py-0 text-center lg:text-justify'>
         <div className='leading-tight flex flex-col justify-center items-center lg:items-start gap-1'>
           <h1 className='text-xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-[max(48px,min(5vw,50px))] font-flatline'>Rudi Arce Internacional</h1>
-          <h2 className='tracking-tighter w-max text-[1.7rem] sm:text-5xl md:text-6xl xl:text-[max(50px,min(5vw,100px))] font-flatline font-normal mb-3'>Protegiendo tu <strong>futuro</strong>, hoy</h2>
-          <p className=' w-[100%] lg:w-[70%] text-xs md:text-sm leading-snug'>Con un firme compromiso con la innovación y la excelencia, cuidamos el futuro de nuestros clientes en la región de America Latina. </p>
+          <h2 className='tracking-tighter min-w-max text-[1.7rem] sm:text-5xl md:text-6xl xl:text-[max(50px,min(5vw,100px))] font-flatline font-normal mb-3'>Protegiendo tu <strong className='tracking-wider'>futuro</strong>, hoy</h2>
+          <p className=' w-[100%] lg:w-[70%] text-xs md:text-sm leading-snug '>Con un firme compromiso con la innovación y la excelencia, cuidamos el futuro de nuestros clientes en la región de America Latina. </p>
           <div className='lg:flex items-center gap-5 hidden'>
             <button onMouseEnter={() => toggler(true)} onMouseLeave={() => toggler(false)} className='text-sm cursor-pointer text-azulCustom flex items-center gap-3 min-w-max'>Mis servicios aplican restricciones* <FaArrowRight /></button>
             <motion.div
@@ -43,7 +43,7 @@ export default function Home() {
         </div>
       </div>
       <div className='flex flex-col items-center justify-center w-full'>
-        <Image className='w-[20rem] sm:w-[25rem] lg:w-[38rem] imageIndex' src={family} alt='Family' />
+        <Image className='w-[16rem] sm:w-[25rem] lg:w-[38rem] imageIndex' src={family} alt='Family' />
       </div>
     </main>
   );
