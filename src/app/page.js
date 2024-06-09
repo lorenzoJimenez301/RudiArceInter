@@ -16,7 +16,7 @@ export default function Home() {
   }
 
   return (
-    <main className='flex flex-col lg:flex-row items-center justify-start'>
+    <main className='flex flex-col lg:flex-row items-center justify-start pt-20'>
       <div className='flex flex-col lg:flex-row items-center justify-center pt-10 pb-6 px-5 md:px-16 lg:px-0 lg:pl-16 lg:py-0 text-center lg:text-justify'>
         <div className='leading-tight flex flex-col justify-center items-center lg:items-start gap-1'>
           <h1 className='text-xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-[max(48px,min(5vw,50px))] font-flatline'>Rudi Arce Internacional</h1>
