@@ -15,6 +15,7 @@ import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { FaPerson, FaDiamond } from 'react-icons/fa6';
 import Link from 'next/link';
 
+
 const Seguro = () => {
 
     const isMobile = useMediaQuery({ maxWidth: 1024 })
@@ -121,7 +122,7 @@ const Seguro = () => {
             </div>
             <article className='flex flex-col justify-center items-center h-full pb-20 lg:pb-48 gap-12 lg:gap-24 px-5 lg:px-[3rem]'>
                 <h2 className='text-2xl lg:text-4xl font-poppins font-bold text-center'>Completa el formulario y pronto estare en contacto contigo!</h2>
-                <iframe src='https://amedex.web.app/widget?config=c4049edabae0c54e2347c82e21413ec3' className='max-w-[300px] lg:max-w-none min-h-[1100px] lg:min-h-0' height={isMobile ? 1100 : 900} width={isMobile ? 400 : 500} ></iframe>
+                <iframe src='https://amedex.web.app/widget?config=c4049edabae0c54e2347c82e21413ec3' loading='lazy' className='max-w-[300px] lg:max-w-none min-h-[1100px] lg:min-h-0' height={isMobile ? 1100 : 900} width={isMobile ? 400 : 500} ></iframe>
             </article>
         </section>
     );

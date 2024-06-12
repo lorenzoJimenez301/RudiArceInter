@@ -7,7 +7,7 @@ import { Poppins } from 'next/font/google'
 
 export const metadata = {
   title: "Rudi Arce Internacional",
-  description: "No esperes mas, adquiere tu seguro de vida ahora!",
+  description: "No esperes más, adquiere tu seguro de vida ahora!",
 
 };
 
