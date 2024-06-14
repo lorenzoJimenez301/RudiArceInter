@@ -1,52 +1,92 @@
 "use client"
 
 import React, { useState } from 'react';
-import { motion } from 'framer-motion'
+import { motion } from 'framer-motion';
+import { Form, Field, useFormik } from 'formik';
 
 const Formulario = () => {
 
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [numero, setNumber] = useState('');
-    const [message, setMessage] = useState('');
-    const [status, setStatus] = useState('');
+    const [status, setStatus] = useState(null);
 
-    const sendEmail = async (e) => {
-        e.preventDefault();
+    const validate = values => {
+        const errors = {};
 
-        try {
-            const res = await fetch('/api/emailApi', {
-                method: "POST",
-                body: JSON.stringify({name, email, numero, message}),
-                headers: {
-                    'Content-Type': 'application/json',
-                    Accept: 'application/json',
-                },
-            });
-
-            if(res.ok){
-                setStatus('Enviado!')
-            }else{
-                setStatus('Error al enviar')
-            }
-
-
-        } catch (error) {
-            console.error('Error fetching or parsing data:', error.message);
-            setStatus(`Error: ${error.message}`);
+        if (!values.name) {
+        } else if (!/^[^\d]*$/.test(values.name)) {
+            errors.name = <p className='text-red-500 mt-2 text-xs lg:text-lg'>El nombre no puede contener números</p>;
+        } else if (values.name.length < 3) {
+            errors.name = <p className='text-red-500 mt-2 text-xs lg:text-lg'>El nombre debe tener mínimo 3 letras</p>;
         }
+        if (!values.email) {
+        } else if (!/\S+@\S+\.\S+/.test(values.email)) {
+            errors.email = <p className='text-red-500 mt-2 text-xs lg:text-lg'>El correo tiene un formato incorrecto</p>;
+        }
+        if (!values.numero) {
+        } else if (!/^\d+$/.test(values.numero)) {
+            errors.numero = <p className='text-red-500 mt-2 text-xs lg:text-lg'>Solo se permiten números en este campo</p>;
+        }else if(values.numero.length < 8){
+            errors.numero = <p className='text-red-500 mt-2 text-xs lg:text-lg'>El número debe tener mínimo 8 dígitos</p>;
+        }else if(values.numero.length > 15){
+            errors.numero = <p className='text-red-500 mt-2 text-xs lg:text-lg'>El número no puede ser mayor a 15 dígitos</p>;
+        }
+
+        return errors;
     };
 
+    const formik = useFormik({
+        initialValues: {
+            name: "",
+            email: "",
+            numero: "",
+            message: "",
+        },
+        validate,
+        onSubmit: async values => {
+
+            try {
+                const res = await fetch('/api/emailApi', {
+                    method: "POST",
+                    body: JSON.stringify(values),
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Accept: 'application/json',
+                    },
+                });
+
+                setStatus('Mensaje enviado correctamente!');
+                setTimeout(() => {
+                    setStatus(null); // Limpiar el estado después de un tiempo para ocultar el mensaje
+                }, 5000); // Ocultar el mensaje después de 5 segundos
+
+            } catch (error) {
+                console.error('Error fetching or parsing data:', error.message);
+                setStatus(`Error: ${error.message}`);
+            }
+
+        }
+    });
+
     return (
-        <form onSubmit={sendEmail} className='flex flex-col gap-3 lg:gap-4'>
-            <label className='font-semibold' htmlFor="">Nombre Completo</label>
-            <input onChange={(e) => setName(e.target.value)} value={name} placeholder='Coloca tu nombre aquí...' className='placeholder:text-[#3b3b3b] placeholder:opacity-75 placeholder:font-light p-3 h-10 bg-transparent border-[0.5px] border-white' type="text" required />
-            <label className='font-semibold' htmlFor="">Correo</label>
-            <input onChange={(e) => setEmail(e.target.value)} value={email} placeholder='Coloca tu correo aquí...' className='placeholder:text-[#3b3b3b] placeholder:opacity-75 placeholder:font-light p-3 h-10 bg-transparent border-[0.5px] border-white' type="email" required />
-            <label className='font-semibold' htmlFor="">Teléfono</label>
-            <input onChange={(e) => setNumber(e.target.value)} value={numero} placeholder='Coloca tu número de teléfono aquí...' className='placeholder:text-[#3b3b3b] placeholder:opacity-75 placeholder:font-light p-3 h-10 bg-transparent border-[0.5px] border-white' type="tel" required />
-            <label className='font-semibold' htmlFor="">Mensaje</label>
-            <textarea value={message} onChange={(e) => setMessage(e.target.value)} placeholder='Coloca tu mensaje aquí...' className='placeholder:text-[#3b3b3b] placeholder:opacity-75 placeholder:font-light py-1 px-3 bg-transparent border-[0.5px] border-white h-32 min-h-32 max-h-32' type="text" required />
+        <form onSubmit={formik.handleSubmit} className='flex flex-col gap-3 lg:gap-1 '>
+            <div className='flex flex-col py-0 lg:py-4 h-[6rem] lg:h-28'>
+                <label className='font-semibold' htmlFor="name">Nombre Completo</label>
+                <input onChange={formik.handleChange} value={formik.values.name} id='name' name="name" placeholder='Coloca tu nombre aquí...' className='focus:border-azulCustom outline-none placeholder:text-[#3b3b3b] placeholder:opacity-75 placeholder:font-light p-3 h-10 bg-transparent border-[0.5px] border-white' type="text" required />
+                {formik.errors.name}
+            </div>
+            <div className='flex flex-col py-0 lg:py-4 h-[6rem] lg:h-28'>
+                <label className='font-semibold' htmlFor="correo">Correo</label>
+                <input onChange={formik.handleChange} value={formik.values.email} id='correo' name="email" placeholder='Coloca tu correo aquí...' className='focus:border-azulCustom outline-none placeholder:text-[#3b3b3b] placeholder:opacity-75 placeholder:font-light p-3 h-10 bg-transparent border-[0.5px] border-white' type="email" required />
+                {formik.errors.email}
+            </div>
+            <div className='flex flex-col py-0 lg:py-4 h-[6rem] lg:h-28'>
+                <label className='font-semibold' htmlFor="tel">Teléfono</label>
+                <input onChange={formik.handleChange} value={formik.values.numero} id='tel' name="numero" placeholder='Coloca tu número de teléfono aquí...' className='focus:border-azulCustom outline-none placeholder:text-[#3b3b3b] placeholder:opacity-75 placeholder:font-light p-3 h-10 bg-transparent border-[0.5px] border-white' type="tel" required />
+                {formik.errors.numero}
+            </div>
+            <div className='flex flex-col py-0 lg:py-4'>
+                <label className='font-semibold' htmlFor="mensaje">Mensaje</label>
+                <textarea onChange={formik.handleChange} value={formik.values.message} component='textarea' id='mensaje' name="message" placeholder='Coloca tu mensaje aquí...' className='focus:border-azulCustom outline-none placeholder:text-[#3b3b3b] placeholder:opacity-75 placeholder:font-light py-1 px-3 bg-transparent border-[0.5px] border-white h-32 min-h-32 max-h-32' type="text" required />
+            </div>
             <motion.button
                 type='submit'
                 initial={{ scale: 1 }}
@@ -54,7 +94,7 @@ const Formulario = () => {
                 transition={{ type: 'spring', stiffness: 300 }}
                 className='bg-azulCustom p-2 px-3 flex items-center justify-center gap-3 font-semibold mt-5 w-max m-auto'>Enviar
             </motion.button>
-            {status && <p className='w-full text-center mt-5'>{status}</p> }
+            <p>{status && <p>{status}</p>}</p>
         </form>
     );
 }

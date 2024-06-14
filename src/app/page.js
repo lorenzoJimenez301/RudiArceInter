@@ -37,7 +37,7 @@ export default function Home() {
               initial={{ scale: 1 }}
               whileHover={{ scale: 1.1 }}
               transition={{ type: 'spring', stiffness: 300 }}
-              className='bg-azulCustom p-2 px-3 flex items-center justify-center gap-3 text-sm mt-5'>Adquirir Seguro
+              className='bg-azulCustom p-2 px-3 flex items-center justify-center gap-3 text-sm mt-5 font-semibold'>Adquirir Seguro
             </motion.button>
           </Link>
         </div>

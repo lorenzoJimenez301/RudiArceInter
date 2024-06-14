@@ -17,7 +17,7 @@ const Contacto = () => {
         <Formulario />
       </div>
       <div className='hidden w-full lg:w-auto lg:flex flex-col justify-center items-center gap-20'>
-        <Image className='hidden lg:block w-[35rem] lg:w-[30rem] xl:w-[35rem]' src={callCenter} alt='Contacto Rudi Arce Internacional' />
+        <Image priority className='hidden lg:block w-[35rem] lg:w-[30rem] xl:w-[35rem]' src={callCenter} alt='Contacto Rudi Arce Internacional' />
         <div className='flex gap-24 lg:gap-12 xl:gap-20 justify-start items-start'>
           <div className='flex flex-col items-center justify-center gap-2'>
             <h4 className='text-azulCustom font-semibold'>Correo</h4>
