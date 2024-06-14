@@ -7,7 +7,6 @@ import { FaDiamond } from 'react-icons/fa6';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
 
-
 const Notfound = () => {
     return (
         <section className='h-screen  flex flex-col justify-center items-center'>

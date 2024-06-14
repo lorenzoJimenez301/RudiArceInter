@@ -32,7 +32,7 @@ export default function Home() {
               Países Restringidos de nuestros servicios: <strong>Anguila, Haiti, Cuba, Surinam, Costa Rica.</strong>
             </motion.div>
           </div>
-          <Link className='hidden lg:block' href={'/seguros'}>
+          <Link className='hidden lg:block' href={'/seguros#cotizador'}>
             <motion.button
               initial={{ scale: 1 }}
               whileHover={{ scale: 1.1 }}

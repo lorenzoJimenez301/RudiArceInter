@@ -23,14 +23,14 @@ const Seguro = () => {
 
     return (
         <section className='pt-20 flex justify-center items-center flex-col'>
-            <article className='pt-10 lg:px-9 lg:w-full flex flex-col justify-center items-center lg:flex-row lg:gap-28 gap-16'>
-                <div className='text-center lg:gap-7 lg:text-justify flex flex-col justify-center items-center gap-3 lg:w-max px-2 lg:px-0 '>
-                    <h2 className='lg:tracking-tighter text-xl lg:text-4xl font-Poppins font-semibold lg:w-[auto] lg:max-w-[50rem]' >Los imprevistos de urgencia ocurren de vez en cuando</h2>
+            <article className='pt-10 lg:px-9  flex flex-col justify-center items-center lg:flex-row lg:gap-30 gap-16'>
+                <div className='text-center lg:gap-7 lg:text-justify flex flex-col justify-center items-center gap-3 px-9 lg:px-0 max-w-max lg:max-w-[40%]'>
+                    <h2 className='w-full lg:tracking-tighter text-xl lg:text-5xl font-Poppins font-semibold' >Misión:</h2>
                     <hr className='lg:w-full w-[75%] border-[.5] border-grisCustom' />
-                    <h3 className='font-light text-sm lg:text-xl w-full'>Que no te tomen por sorpresa</h3>
+                    <h3 className='font-light text-xs lg:text-xl'>Ayudar a las personas en caso de una muerte prematura del pilar economico de la familia. Que su ser querido viva a traves de los ojos de su familia y que gracias a él no les falta nada.  Por que tomó la decision de protejerlos con un seguro de vida.</h3>
                 </div>
                 <div className='flex justify-center items-center lg:w-max lg:pr-[1.5rem] bg-green'>
-                    <Image priority className='w-[19rem] lg:w-[35rem]' src={seguroHero} alt='Family' />
+                    <Image priority className='w-[19rem] lg:w-[25rem] xl:w-[35rem]' src={seguroHero} alt='Family' />
                 </div>
             </article>
             <div className='flex justify-center items-center gap-3 my-[5rem] lg:my-[10rem] w-full'>
@@ -41,7 +41,7 @@ const Seguro = () => {
             <article className='w-full flex flex-col items-center gap-12 px-5 lg:px-[3rem]'>
                 <div className='text-center flex flex-col justify-center items-center lg:gap-10 gap-3'>
                     <h2 className='text-xl lg:text-4xl font-Poppins font-semibold max-w-[90rem] px-5 lg:px-5'>¿Que es un seguro de vida?</h2>
-                    <p className='font-light text-xs lg:text-xl max-w-[70rem] px-5 lg:px-5'>Un seguro de vida es un contrato en el que una compañía aseguradora se compromete a pagar una cantidad de dinero a los beneficiarios designados en caso de fallecimiento del asegurado, a cambio de pagos regulares o una suma única</p>
+                    <p className='font-light text-xs lg:text-xl max-w-[70rem] px-5 lg:px-5'>El seguro de Vida es el mejor instrumento para crear un patrimonio donde no lo hay,  ya que te permite tener proteccion, seguridad financiera, paz.  Te garantiza la educacion de tus hijos y una herencia en caso de fallecer prematuramente.</p>
                 </div>
                 <div className='w-full lg:mt-10'>
                     <Swiper
@@ -120,7 +120,7 @@ const Seguro = () => {
                 <FaDiamond className='lg:text-5xl text-3xl text-[#272727]' />
                 <hr className='lg:w-full w-[75%] border-[.5] border-grisCustom' />
             </div>
-            <article className='flex flex-col justify-center items-center h-full pb-20 lg:pb-48 gap-12 lg:gap-24 px-5 lg:px-[3rem]'>
+            <article id='cotizador' className='flex flex-col justify-center items-center h-full pb-20 lg:pb-48 gap-12 lg:gap-24 px-5 lg:px-[3rem]'>
                 <h2 className='text-2xl lg:text-4xl font-poppins font-bold text-center'>Completa el formulario y pronto estare en contacto contigo!</h2>
                 <iframe src='https://amedex.web.app/widget?config=c4049edabae0c54e2347c82e21413ec3' loading='lazy' className='max-w-[300px] lg:max-w-none min-h-[1100px] lg:min-h-0' height={isMobile ? 1100 : 900} width={isMobile ? 400 : 500} ></iframe>
             </article>
