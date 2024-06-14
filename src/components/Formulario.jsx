@@ -2,7 +2,8 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Form, Field, useFormik } from 'formik';
+import { useFormik } from 'formik';
+import Swal from 'sweetalert2'
 
 const Formulario = () => {
 
@@ -24,9 +25,9 @@ const Formulario = () => {
         if (!values.numero) {
         } else if (!/^\d+$/.test(values.numero)) {
             errors.numero = <p className='text-red-500 mt-2 text-xs lg:text-lg'>Solo se permiten números en este campo</p>;
-        }else if(values.numero.length < 8){
+        } else if (values.numero.length < 8) {
             errors.numero = <p className='text-red-500 mt-2 text-xs lg:text-lg'>El número debe tener mínimo 8 dígitos</p>;
-        }else if(values.numero.length > 15){
+        } else if (values.numero.length > 15) {
             errors.numero = <p className='text-red-500 mt-2 text-xs lg:text-lg'>El número no puede ser mayor a 15 dígitos</p>;
         }
 
@@ -53,12 +54,21 @@ const Formulario = () => {
                     },
                 });
 
-                setStatus('Mensaje enviado correctamente!');
-                setTimeout(() => {
-                    setStatus(null); // Limpiar el estado después de un tiempo para ocultar el mensaje
-                }, 5000); // Ocultar el mensaje después de 5 segundos
+                Swal.fire({
+                    background: "#fff",
+                    showConfirmButton: false,
+                    timer: 2000,
+                    title: "Mensaje enviado correctamente",
+                    icon: "success"
+                });
 
             } catch (error) {
+                Swal.fire({
+                    showConfirmButton: false,
+                    timer: 2000,
+                    title: "Error al enviar el mensaje",
+                    icon: "error"
+                });
                 console.error('Error fetching or parsing data:', error.message);
                 setStatus(`Error: ${error.message}`);
             }
@@ -68,22 +78,22 @@ const Formulario = () => {
 
     return (
         <form onSubmit={formik.handleSubmit} className='flex flex-col gap-3 lg:gap-1 '>
-            <div className='flex flex-col py-0 lg:py-4 h-[6rem] lg:h-28'>
+            <div className='gap-3 flex flex-col py-0 lg:py-4 h-[6rem] lg:h-28'>
                 <label className='font-semibold' htmlFor="name">Nombre Completo</label>
                 <input onChange={formik.handleChange} value={formik.values.name} id='name' name="name" placeholder='Coloca tu nombre aquí...' className='focus:border-azulCustom outline-none placeholder:text-[#3b3b3b] placeholder:opacity-75 placeholder:font-light p-3 h-10 bg-transparent border-[0.5px] border-white' type="text" required />
                 {formik.errors.name}
             </div>
-            <div className='flex flex-col py-0 lg:py-4 h-[6rem] lg:h-28'>
+            <div className='gap-3 flex flex-col py-0 lg:py-4 h-[6rem] lg:h-28'>
                 <label className='font-semibold' htmlFor="correo">Correo</label>
                 <input onChange={formik.handleChange} value={formik.values.email} id='correo' name="email" placeholder='Coloca tu correo aquí...' className='focus:border-azulCustom outline-none placeholder:text-[#3b3b3b] placeholder:opacity-75 placeholder:font-light p-3 h-10 bg-transparent border-[0.5px] border-white' type="email" required />
                 {formik.errors.email}
             </div>
-            <div className='flex flex-col py-0 lg:py-4 h-[6rem] lg:h-28'>
+            <div className='gap-3 flex flex-col py-0 lg:py-4 h-[6rem] lg:h-28'>
                 <label className='font-semibold' htmlFor="tel">Teléfono</label>
                 <input onChange={formik.handleChange} value={formik.values.numero} id='tel' name="numero" placeholder='Coloca tu número de teléfono aquí...' className='focus:border-azulCustom outline-none placeholder:text-[#3b3b3b] placeholder:opacity-75 placeholder:font-light p-3 h-10 bg-transparent border-[0.5px] border-white' type="tel" required />
                 {formik.errors.numero}
             </div>
-            <div className='flex flex-col py-0 lg:py-4'>
+            <div className='gap-3 flex flex-col py-0 lg:py-4'>
                 <label className='font-semibold' htmlFor="mensaje">Mensaje</label>
                 <textarea onChange={formik.handleChange} value={formik.values.message} component='textarea' id='mensaje' name="message" placeholder='Coloca tu mensaje aquí...' className='focus:border-azulCustom outline-none placeholder:text-[#3b3b3b] placeholder:opacity-75 placeholder:font-light py-1 px-3 bg-transparent border-[0.5px] border-white h-32 min-h-32 max-h-32' type="text" required />
             </div>
@@ -94,7 +104,7 @@ const Formulario = () => {
                 transition={{ type: 'spring', stiffness: 300 }}
                 className='bg-azulCustom p-2 px-3 flex items-center justify-center gap-3 font-semibold mt-5 w-max m-auto'>Enviar
             </motion.button>
-            <p>{status && <p>{status}</p>}</p>
+            <p className='w-full text-green-500 font-semibold text-center mt-4'>{status && status}</p>
         </form>
     );
 }

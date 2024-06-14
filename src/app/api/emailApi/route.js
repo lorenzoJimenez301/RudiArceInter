@@ -1,6 +1,7 @@
 
 import { NextResponse } from "next/server"
 import nodemailer from 'nodemailer';
+import path from 'path';
 
 export async function POST(req, res) {
 
@@ -8,7 +9,6 @@ export async function POST(req, res) {
 
   const { name, email, numero, message } = body;
 
-  // Configuración del transporte
   let transporter = nodemailer.createTransport({
     service: 'gmail',
     port: process.env.SMTP_PORT,
@@ -19,14 +19,34 @@ export async function POST(req, res) {
     },
   });
 
+  const imagePath = path.join(process.cwd(), 'public', 'assets', 'images', 'Logo_RAI.svg');
+
+  // Configurar el contenido del correo
+  let mailOptions = {
+    from: email,
+    to: process.env.SMTP_USER,
+    subject: name,
+    html: `
+        <div style="font-family: 'Poppins', sans-serif">
+        <h1>Hola, soy ${name}</h1>
+        <p>${message}</p>
+        <h4 style="margin: 0px;">Mi información de contacto es la siguientes:</p>
+        <h4 style="margin: 5px 0 0 0;">Correo: <strong>${email}</strong></p>
+        <h4 style="margin: 5px 0 0 0;">Teléfono: <strong>${numero}</strong></p>
+        </div>
+        <img style="margin: 10px 0 0 0; height: 100px;" src="https://i.imgur.com/iw03iM4.jpeg" alt="Rudi Arce Logo" /> 
+    `
+  };
+
 
   try {
     // Enviar correo
-    let info = await transporter.sendMail({
-      from: email, // El remitente debe ser el correo del usuario que envía el formulario
-      to: process.env.SMTP_USER, // El destinatario es tu propia dirección de correo electrónico
-      subject: `${name} - ${numero}`,
-      text: message,
+    let info = await transporter.sendMail(mailOptions, function (eror, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Correo enviado: ' + info.response);
+      }
     });
 
     return NextResponse.json({ success: true, message: 'Correo enviado exitosamente' });

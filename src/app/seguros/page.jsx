@@ -11,19 +11,48 @@ import { Navigation, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { FaPerson, FaDiamond } from 'react-icons/fa6';
 import Link from 'next/link';
-
+import { motion, useAnimation } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+import React, { useEffect, useState } from 'react';
 
 const Seguro = () => {
 
-    const isMobile = useMediaQuery({ maxWidth: 1024 })
+    const controls = useAnimation();
 
+    const { ref: ref1, inView: inView1 } = useInView({
+        threshold: 0.15,
+    });
+    const { ref: ref2, inView: inView2 } = useInView({
+        threshold: 0.30,
+    });
+    const { ref: ref3, inView: inView3 } = useInView({
+        threshold: 0.15,
+    });
+
+    React.useEffect(() => {
+        if (inView1 || inView2 || inView3) {
+            controls.start('visible');
+        } else {
+            controls.start('hidden');
+        }
+    }, [controls, inView1, inView2, inView3]);
+
+
+    const isMobile = useMediaQuery({ maxWidth: 1024 })
 
     return (
         <section className='pt-20 flex justify-center items-center flex-col'>
-            <article className='pt-10 lg:px-9  flex flex-col justify-center items-center lg:flex-row lg:gap-30 gap-16'>
+            <motion.article
+                ref={ref1}
+                initial="hidden"
+                animate={controls}
+                variants={{
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+                    hidden: { opacity: 0, y: 50 },
+                }}
+                className='pt-10 lg:px-9  flex flex-col justify-center items-center lg:flex-row lg:gap-30 gap-16'>
                 <div className='text-center lg:gap-7 lg:text-justify flex flex-col justify-center items-center gap-3 px-9 lg:px-0 max-w-max lg:max-w-[40%]'>
                     <h2 className='w-full lg:tracking-tighter text-xl lg:text-5xl font-Poppins font-semibold' >Misión:</h2>
                     <hr className='lg:w-full w-[75%] border-[.5] border-grisCustom' />
@@ -32,7 +61,7 @@ const Seguro = () => {
                 <div className='flex justify-center items-center lg:w-max lg:pr-[1.5rem] bg-green'>
                     <Image priority className='w-[19rem] lg:w-[25rem] xl:w-[35rem]' src={seguroHero} alt='Family' />
                 </div>
-            </article>
+            </motion.article>
             <div className='flex justify-center items-center gap-3 my-[5rem] lg:my-[10rem] w-full'>
                 <hr className='lg:w-full w-[75%] border-[.5] border-grisCustom' />
                 <FaDiamond className='lg:text-5xl text-3xl text-[#272727]' />
@@ -67,10 +96,6 @@ const Seguro = () => {
                             </SwiperSlide>
                         ))}
                     </Swiper>
-                    <div className='gap-80 hidden w-full lg:flex justify-center items-center p-7'>
-                        <FaArrowLeft className='hover:text-azulCustom transition-all duration-300 custom-prev-button cursor-pointer text-4xl' />
-                        <FaArrowRight className='hover:text-azulCustom transition-all duration-300 custom-next-button cursor-pointer text-4xl' />
-                    </div>
                 </div>
             </article>
             <div className='flex justify-center items-center gap-3 my-[5rem] lg:my-[10rem] w-full'>
@@ -78,7 +103,15 @@ const Seguro = () => {
                 <FaDiamond className='lg:text-5xl text-3xl text-[#272727]' />
                 <hr className='lg:w-full w-[75%] border-[.5] border-grisCustom' />
             </div>
-            <article className=' w-full flex flex-col justify-center items-center gap-12 lg:gap-20 px-5 lg:px-[3rem]'>
+            <motion.article
+                ref={ref2}
+                initial="hidden"
+                animate={controls}
+                variants={{
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+                    hidden: { opacity: 0, y: 50 },
+                }}
+                className=' w-full flex flex-col justify-center items-center gap-12 lg:gap-20 px-5 lg:px-[3rem]'>
                 <div className='text-center flex flex-col justify-center items-center gap-3'>
                     <h2 className='text-2xl lg:text-4xl font-poppins font-semibold'>En que consisten nuestros seguros de vida?</h2>
                     <p className='text-xs lg:text-lg font-light'>Mis seguros de vida son a término o temporal, el cual te protege por un plazo de: </p>
@@ -103,18 +136,26 @@ const Seguro = () => {
                 <div className='w-full lg:w-[50%] lg:max-w-[60rem] text-center px-5 lg:px-[3rem]'>
                     <p className='text-xs font-light lg:text-lg'>Es flexible y con precios accesibles, cuyo costo se establece al contratar y se mantiene igual por todo el tiempo de cobertura. ¡Sin examen médico para pólizas menores de 1 millón de dólares!. </p>
                 </div>
-            </article>
+            </motion.article>
             <div className='flex justify-center items-center gap-3 my-[5rem] lg:my-[10rem] w-full'>
                 <hr className='lg:w-full w-[75%] border-[.5] border-grisCustom' />
                 <FaDiamond className='lg:text-5xl text-3xl text-[#272727]' />
                 <hr className='lg:w-full w-[75%] border-[.5] border-grisCustom' />
             </div>
-            <article className=' w-full flex flex-col gap-12 lg:py-24'>
+            <motion.article
+                ref={ref3}
+                initial="hidden"
+                animate={controls}
+                variants={{
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+                    hidden: { opacity: 0, y: 50 },
+                }}
+                className=' w-full flex flex-col gap-12 lg:py-24'>
                 <div className='text-center flex flex-col justify-center items-center gap-3 w-full lg:w-auto px-5 lg:px-[3rem]'>
                     <h2 className='text-2xl lg:text-4xl font-poppins font-bold'>¿Cuánto dinero debería destinar a mi seguro de vida?</h2>
                     <p className='text-xs font-light lg:text-lg'>Te ofrezco una gran cantidad de opciones, de acuerdo con tus posibilidades y a tus metas. Para saber más información, <strong><Link href='/contacto' className='font-bold text-azulCustom cursor-pointer'>da clic aquí.</Link></strong></p>
                 </div>
-            </article>
+            </motion.article>
             <div className='flex justify-center items-center gap-3 my-[5rem] lg:my-[10rem] w-full '>
                 <hr className='lg:w-full w-[75%] border-[.5] border-grisCustom' />
                 <FaDiamond className='lg:text-5xl text-3xl text-[#272727]' />

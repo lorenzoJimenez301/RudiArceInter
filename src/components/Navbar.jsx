@@ -39,7 +39,7 @@ const Navbar = () => {
                     <TfiClose onClick={toggleMenu} className='text-white text-[33px] mr-5 cursor-pointer block lg:hidden' /> :
                     <CiMenuFries onClick={toggleMenu} className='text-white text-[33px] mr-5 cursor-pointer block lg:hidden' />
                 }
-                <ul className='bg-blackCustom font-poppins font-light justify-center items-center hidden lg:flex text-lg gap-10 w-auto mr-8'>
+                <ul className='bg-blackCustom font-poppins font-light justify-center items-center hidden lg:flex text-base gap-10 w-auto mr-8'>
                     <li className='hover:text-azulCustom transition duration-500'><Link href='/'>Inicio</Link></li>
                     <li className='hover:text-azulCustom transition duration-500'><Link href='/seguros'>Seguro de Vida</Link></li>
                     <li className='hover:text-azulCustom transition duration-500'><Link href='/sobreMi'>Sobre Mi</Link></li>

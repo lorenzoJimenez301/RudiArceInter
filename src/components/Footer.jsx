@@ -15,9 +15,9 @@ const Footer = () => {
       </div>
       <div className=' w-auto flex text-center flex-col gap-4'>
         <ul className='flex items-center justify-center text-2xl gap-4'>
-          <li><BsWhatsapp target='_blank' href='https://wa.me/+50683105134?text=Hola%21%2C%20Brindame%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20seguros%2C%20por%20favor.'/></li>
-          <li><BsLinkedin target='_blank' href='https://www.linkedin.com/in/rudi-arce-moya-3894774a/'/></li>
-          <li><BsFacebook href='#' /></li>
+          <li><BsWhatsapp className='cursor-pointer hover:text-azulCustom transition-all duration-300' target='_blank' href='https://wa.me/+50683105134?text=Hola%21%2C%20Brindame%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20seguros%2C%20por%20favor.'/></li>
+          <li><BsLinkedin className='cursor-pointer hover:text-azulCustom transition-all duration-300' target='_blank' href='https://www.linkedin.com/in/rudi-arce-moya-3894774a/'/></li>
+          <li><BsFacebook className='cursor-pointer hover:text-azulCustom transition-all duration-300' href='#' /></li>
         </ul>
         <p>© Rudi Arce Internacional {year}. Todos los derechos reservados</p>
       </div>
