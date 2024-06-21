@@ -16,14 +16,14 @@ export default function Home() {
   }
 
   return (
-    <main className='flex  flex-col lg:flex-row items-center justify-between pt-20 lg:pt-0 gap-32")]'>
+    <main className='flex min-h-full flex-col lg:flex-row items-center justify-center pt-20 lg:pt-10 gap-32")]'>
       <motion.div
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.2 }}
         viewport={{once: true}}
         className='flex flex-col lg:flex-row items-center justify-center pt-10 pb-6 px-5 md:px-16 lg:px-0 lg:pl-16 lg:py-0 text-center lg:text-justify'>
-        <div className='leading-tight flex flex-col justify-center items-center lg:items-start lg:gap-1 gap-0'>
+        <div className='leading-tight flex flex-col justify-center items-center lg:items-start lg:gap-1 gap-0 lg:pb-6'>
           <h1 className='text-xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-[max(48px,min(5vw,50px))] font-flatline'>Rudi Arce Internacional</h1>
           <h2 className='lg:indent-[-5px] tracking-tighter min-w-max text-[1.7rem] sm:text-5xl md:text-6xl xl:text-[max(50px,min(5vw,100px))] font-normal lg:mb-9'>Protegiendo tu <strong>futuro</strong>, hoy!</h2>
           <p className=' w-[100%] lg:w-[70%] text-xs md:text-lg leading-snug mt-3 lg:mt-0 font-light'>Con un firme compromiso con la innovación y la excelencia, cuidamos el futuro de nuestros clientes en la región de America Latina. </p>
